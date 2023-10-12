@@ -1,5 +1,8 @@
 ﻿using static Project2.Globals;
 using System.ComponentModel.DataAnnotations;
+using Project2.Business.Extensions;
+using Project2.Business.Extensions;
+using static Project2.Globals;
 
 namespace Project2.Models.Pages
 {
@@ -16,7 +19,7 @@ namespace Project2.Models.Pages
             {
                 var metaTitle = this.GetPropertyValue(p => p.MetaTitle);
 
-                return !string.IsNullOrEmpty(metaTitle) ? metaTitle : PageName;
+                return metaTitle.IsNotNullOrWhiteSpace() ? metaTitle : PageName;
             }
 
             set => this.SetPropertyValue(p => p.MetaTitle, value);
